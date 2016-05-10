@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/rodrigotbrun/loja-dentalsul/master/logo_dentalsul.png)
+![](https://raw.githubusercontent.com/rodrigotbrun/loja-dentalsul/master/3-Analise_e_Design/3.2-Arquitetura/Logo.png)
 
 - - - - -
 
