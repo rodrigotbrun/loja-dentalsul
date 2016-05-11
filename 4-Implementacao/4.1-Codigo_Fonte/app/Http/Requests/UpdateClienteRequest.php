@@ -2,29 +2,16 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
-use App\Models\Cliente;
+use App\Http\Requests\Abs\BaseUpdateRequest;
 
-class UpdateClienteRequest extends Request
-{
+class UpdateClienteRequest extends BaseUpdateRequest {
 
     /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
+     * Lista de regras para validação da request no modo CREATE
      *
      * @return array
      */
-    public function rules()
-    {
-        return Cliente::$rules;
+    public function rules() {
+        return [];
     }
 }

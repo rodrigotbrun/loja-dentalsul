@@ -2,29 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
-use App\Models\Produto;
+use App\Http\Requests\Abs\BaseUpdateSEORequest;
 
-class UpdateProdutoRequest extends Request
-{
+class UpdateProdutoRequest extends BaseUpdateSEORequest {
 
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
-    {
-        return Produto::$rules;
-    }
 }

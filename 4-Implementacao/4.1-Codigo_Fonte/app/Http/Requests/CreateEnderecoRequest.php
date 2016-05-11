@@ -2,29 +2,17 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
+use App\Http\Requests\Abs\BaseCreateRequest;
 use App\Models\Endereco;
 
-class CreateEnderecoRequest extends Request
-{
-
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
+class CreateEnderecoRequest extends BaseCreateRequest {
 
     /**
      * Get the validation rules that apply to the request.
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules() {
         return Endereco::$rules;
     }
 }

@@ -41,8 +41,8 @@ class Cliente extends BaseModel {
      */
     protected $casts = [
         'id' => 'integer',
-        'profissional' => 'string',
-        'parceiro' => 'string',
+        'profissional' => 'boolean',
+        'parceiro' => 'boolean',
         'tipo' => 'string',
         'nome' => 'string',
         'email' => 'string',
@@ -57,10 +57,10 @@ class Cliente extends BaseModel {
         'celular' => 'string',
         'data_nascimento' => 'date',
         'sexo' => 'string',
-        'receber_informativos' => 'string',
-        'receber_email' => 'string',
-        'ativado' => 'string',
-        'receber_sms' => 'string',
+        'receber_informativos' => 'boolean',
+        'receber_email' => 'boolean',
+        'ativado' => 'boolean',
+        'receber_sms' => 'boolean',
         'data_atualizado' => 'datetime',
         'data_criado' => 'datetime',
         'data_deletado' => 'datetime'
