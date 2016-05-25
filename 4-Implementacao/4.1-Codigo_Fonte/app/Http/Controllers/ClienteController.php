@@ -11,13 +11,11 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
-class ClienteController extends AppBaseController
-{
+class ClienteController extends AppBaseController {
     /** @var  ClienteRepository */
     private $clienteRepository;
 
-    public function __construct(ClienteRepository $clienteRepo)
-    {
+    public function __construct(ClienteRepository $clienteRepo) {
         $this->clienteRepository = $clienteRepo;
     }
 
@@ -27,8 +25,7 @@ class ClienteController extends AppBaseController
      * @param Request $request
      * @return Response
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         $this->clienteRepository->pushCriteria(new RequestCriteria($request));
         $clientes = $this->clienteRepository->all();
 
@@ -41,8 +38,7 @@ class ClienteController extends AppBaseController
      *
      * @return Response
      */
-    public function create()
-    {
+    public function create() {
         return view('clientes.create');
     }
 
@@ -53,8 +49,7 @@ class ClienteController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateClienteRequest $request)
-    {
+    public function store(CreateClienteRequest $request) {
         $input = $request->all();
 
         $cliente = $this->clienteRepository->create($input);
@@ -71,8 +66,7 @@ class ClienteController extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         $cliente = $this->clienteRepository->findWithoutFail($id);
 
         if (empty($cliente)) {
@@ -91,8 +85,7 @@ class ClienteController extends AppBaseController
      *
      * @return Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         $cliente = $this->clienteRepository->findWithoutFail($id);
 
         if (empty($cliente)) {
@@ -107,13 +100,12 @@ class ClienteController extends AppBaseController
     /**
      * Update the specified Cliente in storage.
      *
-     * @param  int              $id
+     * @param  int $id
      * @param UpdateClienteRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdateClienteRequest $request)
-    {
+    public function update($id, UpdateClienteRequest $request) {
         $cliente = $this->clienteRepository->findWithoutFail($id);
 
         if (empty($cliente)) {
@@ -136,8 +128,7 @@ class ClienteController extends AppBaseController
      *
      * @return Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         $cliente = $this->clienteRepository->findWithoutFail($id);
 
         if (empty($cliente)) {

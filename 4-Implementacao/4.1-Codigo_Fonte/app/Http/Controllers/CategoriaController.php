@@ -11,13 +11,11 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
-class CategoriaController extends AppBaseController
-{
+class CategoriaController extends AppBaseController {
     /** @var  CategoriaRepository */
     private $categoriaRepository;
 
-    public function __construct(CategoriaRepository $categoriaRepo)
-    {
+    public function __construct(CategoriaRepository $categoriaRepo) {
         $this->categoriaRepository = $categoriaRepo;
     }
 
@@ -27,8 +25,7 @@ class CategoriaController extends AppBaseController
      * @param Request $request
      * @return Response
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         $this->categoriaRepository->pushCriteria(new RequestCriteria($request));
         $categorias = $this->categoriaRepository->all();
 
@@ -41,8 +38,7 @@ class CategoriaController extends AppBaseController
      *
      * @return Response
      */
-    public function create()
-    {
+    public function create() {
         return view('categorias.create');
     }
 
@@ -53,8 +49,7 @@ class CategoriaController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateCategoriaRequest $request)
-    {
+    public function store(CreateCategoriaRequest $request) {
         $input = $request->all();
 
         $categoria = $this->categoriaRepository->create($input);
@@ -71,8 +66,7 @@ class CategoriaController extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         $categoria = $this->categoriaRepository->findWithoutFail($id);
 
         if (empty($categoria)) {
@@ -91,8 +85,7 @@ class CategoriaController extends AppBaseController
      *
      * @return Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         $categoria = $this->categoriaRepository->findWithoutFail($id);
 
         if (empty($categoria)) {
@@ -107,13 +100,12 @@ class CategoriaController extends AppBaseController
     /**
      * Update the specified Categoria in storage.
      *
-     * @param  int              $id
+     * @param  int $id
      * @param UpdateCategoriaRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdateCategoriaRequest $request)
-    {
+    public function update($id, UpdateCategoriaRequest $request) {
         $categoria = $this->categoriaRepository->findWithoutFail($id);
 
         if (empty($categoria)) {
@@ -136,8 +128,7 @@ class CategoriaController extends AppBaseController
      *
      * @return Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         $categoria = $this->categoriaRepository->findWithoutFail($id);
 
         if (empty($categoria)) {
