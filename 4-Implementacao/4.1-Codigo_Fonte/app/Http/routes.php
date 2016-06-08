@@ -1,32 +1,42 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
+// TODO - Temporário
+Route::get('/', function(){
+    return redirect()->route('admin.dashboard.home');
 });
 
-Route::resource('produtos', 'ProdutoController');
 
-Route::resource('categorias', 'CategoriaController');
+/*
+    _       _           _
+   / \   __| |_ __ ___ (_)_ __
+  / _ \ / _` | '_ ` _ \| | '_ \
+ / ___ \ (_| | | | | | | | | | |
+/_/   \_\__,_|_| |_| |_|_|_| |_|
 
-Route::resource('departamentos', 'DepartamentoController');
+ */
 
-Route::resource('subcategorias', 'SubcategoriaController');
+Route::group([
+    'prefix' => 'admin',
+    'as' => 'admin.',
+    'namespace' => 'Admin',
+    'middleware' => [] // TODO
+], function () {
+    require_once __DIR__ . "/admin-routes.php";
+});
 
-Route::resource('marcas', 'MarcaController');
+/*
+ ____  _
+/ ___|| |_ ___  _ __ ___
+\___ \| __/ _ \| '__/ _ \
+ ___) | || (_) | | |  __/
+|____/ \__\___/|_|  \___|
 
-Route::resource('clientes', 'ClienteController');
+ */
 
-Route::resource('pedidos', 'PedidoController');
-
-Route::resource('enderecos', 'EnderecoController');
+Route::group([
+    'as' => 'store.',
+    'namespace' => 'Store'
+], function () {
+    require_once __DIR__ . "/store-routes.php";
+});

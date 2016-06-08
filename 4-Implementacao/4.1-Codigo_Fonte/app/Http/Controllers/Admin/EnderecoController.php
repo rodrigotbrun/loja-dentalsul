@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests;
 use App\Http\Requests\CreateEnderecoRequest;
@@ -11,13 +11,11 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
-class EnderecoController extends AppBaseController
-{
+class EnderecoController extends AppBaseController {
     /** @var  EnderecoRepository */
     private $enderecoRepository;
 
-    public function __construct(EnderecoRepository $enderecoRepo)
-    {
+    public function __construct(EnderecoRepository $enderecoRepo) {
         $this->enderecoRepository = $enderecoRepo;
     }
 
@@ -27,8 +25,7 @@ class EnderecoController extends AppBaseController
      * @param Request $request
      * @return Response
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         $this->enderecoRepository->pushCriteria(new RequestCriteria($request));
         $enderecos = $this->enderecoRepository->all();
 
@@ -41,8 +38,7 @@ class EnderecoController extends AppBaseController
      *
      * @return Response
      */
-    public function create()
-    {
+    public function create() {
         return view('enderecos.create');
     }
 
@@ -53,8 +49,7 @@ class EnderecoController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateEnderecoRequest $request)
-    {
+    public function store(CreateEnderecoRequest $request) {
         $input = $request->all();
 
         $endereco = $this->enderecoRepository->create($input);
@@ -71,8 +66,7 @@ class EnderecoController extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         $endereco = $this->enderecoRepository->findWithoutFail($id);
 
         if (empty($endereco)) {
@@ -91,8 +85,7 @@ class EnderecoController extends AppBaseController
      *
      * @return Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         $endereco = $this->enderecoRepository->findWithoutFail($id);
 
         if (empty($endereco)) {
@@ -107,13 +100,12 @@ class EnderecoController extends AppBaseController
     /**
      * Update the specified Endereco in storage.
      *
-     * @param  int              $id
+     * @param  int $id
      * @param UpdateEnderecoRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdateEnderecoRequest $request)
-    {
+    public function update($id, UpdateEnderecoRequest $request) {
         $endereco = $this->enderecoRepository->findWithoutFail($id);
 
         if (empty($endereco)) {
@@ -136,8 +128,7 @@ class EnderecoController extends AppBaseController
      *
      * @return Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         $endereco = $this->enderecoRepository->findWithoutFail($id);
 
         if (empty($endereco)) {

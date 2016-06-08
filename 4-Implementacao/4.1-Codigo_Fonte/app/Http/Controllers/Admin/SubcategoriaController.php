@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests;
 use App\Http\Requests\CreateSubcategoriaRequest;
@@ -11,13 +11,11 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
-class SubcategoriaController extends AppBaseController
-{
+class SubcategoriaController extends AppBaseController {
     /** @var  SubcategoriaRepository */
     private $subcategoriaRepository;
 
-    public function __construct(SubcategoriaRepository $subcategoriaRepo)
-    {
+    public function __construct(SubcategoriaRepository $subcategoriaRepo) {
         $this->subcategoriaRepository = $subcategoriaRepo;
     }
 
@@ -27,8 +25,7 @@ class SubcategoriaController extends AppBaseController
      * @param Request $request
      * @return Response
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         $this->subcategoriaRepository->pushCriteria(new RequestCriteria($request));
         $subcategorias = $this->subcategoriaRepository->all();
 
@@ -41,8 +38,7 @@ class SubcategoriaController extends AppBaseController
      *
      * @return Response
      */
-    public function create()
-    {
+    public function create() {
         return view('subcategorias.create');
     }
 
@@ -53,8 +49,7 @@ class SubcategoriaController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateSubcategoriaRequest $request)
-    {
+    public function store(CreateSubcategoriaRequest $request) {
         $input = $request->all();
 
         $subcategoria = $this->subcategoriaRepository->create($input);
@@ -71,8 +66,7 @@ class SubcategoriaController extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         $subcategoria = $this->subcategoriaRepository->findWithoutFail($id);
 
         if (empty($subcategoria)) {
@@ -91,8 +85,7 @@ class SubcategoriaController extends AppBaseController
      *
      * @return Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         $subcategoria = $this->subcategoriaRepository->findWithoutFail($id);
 
         if (empty($subcategoria)) {
@@ -107,13 +100,12 @@ class SubcategoriaController extends AppBaseController
     /**
      * Update the specified Subcategoria in storage.
      *
-     * @param  int              $id
+     * @param  int $id
      * @param UpdateSubcategoriaRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdateSubcategoriaRequest $request)
-    {
+    public function update($id, UpdateSubcategoriaRequest $request) {
         $subcategoria = $this->subcategoriaRepository->findWithoutFail($id);
 
         if (empty($subcategoria)) {
@@ -136,8 +128,7 @@ class SubcategoriaController extends AppBaseController
      *
      * @return Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         $subcategoria = $this->subcategoriaRepository->findWithoutFail($id);
 
         if (empty($subcategoria)) {

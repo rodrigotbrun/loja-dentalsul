@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests;
 use App\Http\Requests\CreatePedidoRequest;
@@ -11,13 +11,11 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
-class PedidoController extends AppBaseController
-{
+class PedidoController extends AppBaseController {
     /** @var  PedidoRepository */
     private $pedidoRepository;
 
-    public function __construct(PedidoRepository $pedidoRepo)
-    {
+    public function __construct(PedidoRepository $pedidoRepo) {
         $this->pedidoRepository = $pedidoRepo;
     }
 
@@ -27,8 +25,7 @@ class PedidoController extends AppBaseController
      * @param Request $request
      * @return Response
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         $this->pedidoRepository->pushCriteria(new RequestCriteria($request));
         $pedidos = $this->pedidoRepository->all();
 
@@ -41,8 +38,7 @@ class PedidoController extends AppBaseController
      *
      * @return Response
      */
-    public function create()
-    {
+    public function create() {
         return view('pedidos.create');
     }
 
@@ -53,8 +49,7 @@ class PedidoController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreatePedidoRequest $request)
-    {
+    public function store(CreatePedidoRequest $request) {
         $input = $request->all();
 
         $pedido = $this->pedidoRepository->create($input);
@@ -71,8 +66,7 @@ class PedidoController extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         $pedido = $this->pedidoRepository->findWithoutFail($id);
 
         if (empty($pedido)) {
@@ -91,8 +85,7 @@ class PedidoController extends AppBaseController
      *
      * @return Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         $pedido = $this->pedidoRepository->findWithoutFail($id);
 
         if (empty($pedido)) {
@@ -107,13 +100,12 @@ class PedidoController extends AppBaseController
     /**
      * Update the specified Pedido in storage.
      *
-     * @param  int              $id
+     * @param  int $id
      * @param UpdatePedidoRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdatePedidoRequest $request)
-    {
+    public function update($id, UpdatePedidoRequest $request) {
         $pedido = $this->pedidoRepository->findWithoutFail($id);
 
         if (empty($pedido)) {
@@ -136,8 +128,7 @@ class PedidoController extends AppBaseController
      *
      * @return Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         $pedido = $this->pedidoRepository->findWithoutFail($id);
 
         if (empty($pedido)) {

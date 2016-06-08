@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests;
 use App\Http\Requests\CreateMarcaRequest;
@@ -11,13 +11,11 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
-class MarcaController extends AppBaseController
-{
+class MarcaController extends AppBaseController {
     /** @var  MarcaRepository */
     private $marcaRepository;
 
-    public function __construct(MarcaRepository $marcaRepo)
-    {
+    public function __construct(MarcaRepository $marcaRepo) {
         $this->marcaRepository = $marcaRepo;
     }
 
@@ -27,8 +25,7 @@ class MarcaController extends AppBaseController
      * @param Request $request
      * @return Response
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         $this->marcaRepository->pushCriteria(new RequestCriteria($request));
         $marcas = $this->marcaRepository->all();
 
@@ -41,8 +38,7 @@ class MarcaController extends AppBaseController
      *
      * @return Response
      */
-    public function create()
-    {
+    public function create() {
         return view('marcas.create');
     }
 
@@ -53,8 +49,7 @@ class MarcaController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateMarcaRequest $request)
-    {
+    public function store(CreateMarcaRequest $request) {
         $input = $request->all();
 
         $marca = $this->marcaRepository->create($input);
@@ -71,8 +66,7 @@ class MarcaController extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         $marca = $this->marcaRepository->findWithoutFail($id);
 
         if (empty($marca)) {
@@ -91,8 +85,7 @@ class MarcaController extends AppBaseController
      *
      * @return Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         $marca = $this->marcaRepository->findWithoutFail($id);
 
         if (empty($marca)) {
@@ -107,13 +100,12 @@ class MarcaController extends AppBaseController
     /**
      * Update the specified Marca in storage.
      *
-     * @param  int              $id
+     * @param  int $id
      * @param UpdateMarcaRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdateMarcaRequest $request)
-    {
+    public function update($id, UpdateMarcaRequest $request) {
         $marca = $this->marcaRepository->findWithoutFail($id);
 
         if (empty($marca)) {
@@ -136,8 +128,7 @@ class MarcaController extends AppBaseController
      *
      * @return Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         $marca = $this->marcaRepository->findWithoutFail($id);
 
         if (empty($marca)) {
