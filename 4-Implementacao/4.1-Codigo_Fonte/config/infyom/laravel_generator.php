@@ -120,7 +120,7 @@ return [
 
     'add_on' => [
 
-        'swagger'       => true,
+        'swagger'       => false,
 
         'tests'         => true,
 
@@ -145,11 +145,11 @@ return [
 
         'enabled'       => true,
 
-        'created_at'    => 'created_at',
+        'created_at'    => 'data_criado',
 
-        'updated_at'    => 'updated_at',
+        'updated_at'    => 'data_atualizado',
 
-        'deleted_at'    => 'deleted_at',
+        'deleted_at'    => 'data_deletado',
     ],
 
 ];
