@@ -31,6 +31,8 @@ class DepartamentoRepositoryTest extends TestCase
         $this->assertNotNull($createdDepartamento['id'], 'Created Departamento must have id specified');
         $this->assertNotNull(Departamento::find($createdDepartamento['id']), 'Departamento with given id must be in DB');
 //        $this->assertModelData($departamento, $createdDepartamento);
+        
+        return $createdDepartamento['id'];
     }
 
     /**
