@@ -4,10 +4,22 @@ namespace App\Models;
 
 use App\Models\Abs\BaseModelSetor;
 
+/**
+ * Class Categoria
+ * @package App\Models
+ */
 class Categoria extends BaseModelSetor {
 
-    public $table = 'categorias';
+    const TABLE = 'categorias';
 
+    /**
+     * @var string
+     */
+    public $table = self::TABLE;
+
+    /**
+     * @var array
+     */
     public $fillable = [
         'id_departamento',
         'nome',

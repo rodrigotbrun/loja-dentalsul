@@ -6,7 +6,8 @@ use App\Models\Abs\BaseModelSEO;
 
 class Produto extends BaseModelSEO {
 
-    public $table = 'produtos';
+    const TABLE = 'produtos';
+    public $table = self::TABLE;
 
     public $fillable = [
         'id_subcategoria',

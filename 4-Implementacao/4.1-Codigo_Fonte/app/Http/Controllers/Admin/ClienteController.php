@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Requests\CreateClienteRequest;
 use App\Http\Requests\UpdateClienteRequest;
+use App\Models\Cliente;
 use App\Repositories\ClienteRepository;
 use Illuminate\Http\Request;
 use Flash;
@@ -24,6 +25,7 @@ class ClienteController extends AppBaseController {
      *
      * @param Request $request
      * @return Response
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function index(Request $request) {
         $this->clienteRepository->pushCriteria(new RequestCriteria($request));
@@ -48,6 +50,7 @@ class ClienteController extends AppBaseController {
      * @param CreateClienteRequest $request
      *
      * @return Response
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function store(CreateClienteRequest $request) {
         $input = $request->all();
@@ -67,6 +70,7 @@ class ClienteController extends AppBaseController {
      * @return Response
      */
     public function show($id) {
+        /** @var Cliente $cliente */
         $cliente = $this->clienteRepository->findWithoutFail($id);
 
         if (empty($cliente)) {
@@ -86,6 +90,7 @@ class ClienteController extends AppBaseController {
      * @return Response
      */
     public function edit($id) {
+        /** @var Cliente $cliente */
         $cliente = $this->clienteRepository->findWithoutFail($id);
 
         if (empty($cliente)) {
@@ -104,8 +109,10 @@ class ClienteController extends AppBaseController {
      * @param UpdateClienteRequest $request
      *
      * @return Response
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function update($id, UpdateClienteRequest $request) {
+        /** @var Cliente $cliente */
         $cliente = $this->clienteRepository->findWithoutFail($id);
 
         if (empty($cliente)) {

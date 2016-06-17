@@ -7,7 +7,9 @@ use App\Models\Abs\BaseModelSetor;
 
 class Departamento extends BaseModelSetor {
 
-    public $table = 'departamentos';
+    const TABLE = 'departamentos';
+
+    public $table = self::TABLE;
 
     public $fillable = [
         'nome',
@@ -46,6 +48,6 @@ class Departamento extends BaseModelSetor {
      * @var array
      */
     public static $rules = [
-        
+
     ];
 }

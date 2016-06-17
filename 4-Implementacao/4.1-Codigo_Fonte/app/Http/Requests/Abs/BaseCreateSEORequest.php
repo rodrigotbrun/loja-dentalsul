@@ -17,12 +17,17 @@ namespace App\Http\Requests\Abs;
 abstract class BaseCreateSEORequest extends BaseCreateRequest {
 
     /**
+     * @var string
+     */
+    protected $tableName;
+
+    /**
      * Regras de validação para dados relacionados a setores da empresa
      * @return array
      */
     public function rules() {
         return [
-            'alias' => 'required|string',
+            'alias' => 'required|string|' . $this->tableName,
         ];
     }
 

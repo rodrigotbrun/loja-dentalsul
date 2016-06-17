@@ -6,7 +6,8 @@ use App\Models\Abs\BaseModelSetor;
 
 class Marca extends BaseModelSetor {
 
-    public $table = 'marcas';
+    const TABLE = 'marcas';
+    public $table = self::TABLE;
 
     public $fillable = [
         'nome',

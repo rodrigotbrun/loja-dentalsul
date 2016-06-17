@@ -20,7 +20,12 @@ abstract class BaseCreateSetorRequest extends BaseCreateSEORequest {
      */
     public function rules() {
         return array_merge(parent::rules(), [
-            // TODO
+            'follow' => 'filled|accepted',
+            'palavras_chave' => 'filled|string',
+            'indexar' => 'filled|accepted',
+            'visivel' => 'filled|accepted',
+            'menu_superior' => 'filled|accepted',
+            'menu_lateral' => 'filled|accepted',
         ]);
     }
 

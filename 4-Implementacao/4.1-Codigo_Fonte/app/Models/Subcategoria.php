@@ -6,7 +6,8 @@ use App\Models\Abs\BaseModelSetor;
 
 class Subcategoria extends BaseModelSetor {
 
-    public $table = 'subcategorias';
+    const TABLE = 'subcategorias';
+    public $table = self::TABLE;
 
     public $fillable = [
         'id_categoria',
